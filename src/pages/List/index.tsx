@@ -5,8 +5,8 @@ import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
-// import gains from '../../repositories/gains';
-// import expenses from '../../repositories/expenses';
+import gainsRepositories from '../../repositories/gains';
+import expensesRepositories from '../../repositories/expenses';
 
 import formatCurrency from '../../utils/formatCurrency';
 
@@ -50,21 +50,21 @@ const List: React.FC = () => {
         const getGains = async () => {
 
 
-            const { data } = await api.get('/gains', {
-                headers: {
-                    'Authorization': `Basic ${token}`
-                }
-            })
-            setGains(data)
+            // const { data } = await api.get('/gains', {
+            //     headers: {
+            //         'Authorization': `Basic ${token}`
+            //     }
+            // })
+            setGains(gainsRepositories)
         }
 
         const getExpenses = async () => {
-            const { data } = await api.get('/expenses', {
-                headers: {
-                    'Authorization': `Basic ${token}`
-                }
-            })
-            setExpenses(data)
+            // const { data } = await api.get('/expenses', {
+            //     headers: {
+            //         'Authorization': `Basic ${token}`
+            //     }
+            // })
+            setExpenses(expensesRepositories)
         };
         getGains()
         getExpenses()

@@ -71,6 +71,7 @@ color: ${props => props.theme.colors.info};
 text-decoration: none;
 transition: opacity .3s;
 
+cursor: pointer;
 margin: 7px 0;
 display: flex;
 align-items: center;

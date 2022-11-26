@@ -8,8 +8,8 @@ import { PieCharts } from '../../components/PieCharts';
 import HistoryBox from '../../components/HistoryBox';
 import { BarChartBox } from '../../components/BarChartBox'
 
-import gains from '../../repositories/gains';
-import expenses from '../../repositories/expenses'
+import gainsRepositorie from '../../repositories/gains';
+import expensesRepositorie from '../../repositories/expenses'
 import listOfMonths from '../../utils/months'
 
 import listOfMonthsB from '../../utils/monthsB'
@@ -42,21 +42,21 @@ const Dashboard: React.FC = () => {
         const getGains = async () => {
 
 
-            const { data } = await api.get('/gains', {
-                headers: {
-                    'Authorization': `Basic ${token}`
-                }
-            })
-            setGains(data)
+            // const { data } = await api.get('/gains', {
+            //     headers: {
+            //         'Authorization': `Basic ${token}`
+            //     }
+            // })
+            setGains(gainsRepositorie)
         }
 
         const getExpenses = async () => {
-            const { data } = await api.get('/expenses', {
-                headers: {
-                    'Authorization': `Basic ${token}`
-                }
-            })
-            setExpenses(data)
+            // const { data } = await api.get('/expenses', {
+            //     headers: {
+            //         'Authorization': `Basic ${token}`
+            //     }
+            // })
+            setExpenses(expensesRepositorie)
         };
         getGains()
         getExpenses()
@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
                 label: year
             }
         })
-    }, [gains,expenses]);
+    }, [gains, expenses]);
 
     const totalExpenses = useMemo(() => {
         let total = 0
@@ -110,7 +110,7 @@ const Dashboard: React.FC = () => {
         })
         return total;
 
-    }, [gains,expenses,monthSelected, yearSelected])
+    }, [gains, expenses, monthSelected, yearSelected])
 
     const totalGains = useMemo(() => {
         let total = 0
@@ -131,7 +131,7 @@ const Dashboard: React.FC = () => {
         })
         return total;
 
-    }, [gains,expenses,monthSelected, yearSelected])
+    }, [gains, expenses, monthSelected, yearSelected])
 
     const message = useMemo(() => {
         switch (true) {
@@ -243,7 +243,7 @@ const Dashboard: React.FC = () => {
 
             })
 
-    }, [yearSelected,monthSelected,gains]);
+    }, [yearSelected, monthSelected, gains]);
 
     const relationExpensevesRecurrentVersusEventual = useMemo(() => {
         let amountRecurrent = 0;
@@ -284,7 +284,7 @@ const Dashboard: React.FC = () => {
             }
         ]
 
-    }, [monthSelected, yearSelected,gains]);
+    }, [monthSelected, yearSelected, gains]);
 
     const relationGainsRecurrentVersusEventual = useMemo(() => {
         let amountRecurrent = 0;
